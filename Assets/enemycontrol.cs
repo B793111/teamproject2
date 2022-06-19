@@ -128,7 +128,7 @@ public class enemycontrol : MonoBehaviour
         Invoke("OnHitcolor", 1);
         if (health <= 0)
         {
-            itemrandom = Random.Range(2,5);
+            itemrandom = Random.Range(1,10);
             if(itemrandom ==2)
             {
                 GameObject enemy = Instantiate(hppotion, my.position, transform.rotation);

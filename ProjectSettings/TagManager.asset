@@ -12,6 +12,8 @@ TagManager:
   - New tag
   - hppotion
   - item
+  - tower
+  - wall
   layers:
   - Default
   - TransparentFX

@@ -30,7 +30,7 @@ public class tower : MonoBehaviour
         {
             healtime -= Time.deltaTime;
         }
-        if(healcountstop==false)
+        if (healcountstop == false)
         {
             if (healtime <= 0)
             {
@@ -41,9 +41,11 @@ public class tower : MonoBehaviour
 
         if (hp <= 0)
         {
-           Gameovertext.SetActive(true);
-           restart_obj.gameObject.SetActive(true);
-           main_obj.gameObject.SetActive(true);
+            Gameovertext.SetActive(true);
+            restart_obj.gameObject.SetActive(true);
+            main_obj.gameObject.SetActive(true);
+            GameObject die = GameObject.Find("player") as GameObject;
+            die.GetComponent<playercontrol>().die(); //playercomtrol¿« die»£√‚
         }
     }
 
@@ -65,8 +67,8 @@ public class tower : MonoBehaviour
         healtime = 5;
         healcountstop = false;
         warningtext.SetActive(true);
-        hp -= 5;
-        healthBarSlider.value -= 5;
+        hp -= 3;
+        healthBarSlider.value -= 3;
 
     }
     public void towerheal()

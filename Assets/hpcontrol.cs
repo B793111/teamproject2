@@ -57,6 +57,7 @@ public class hpcontrol : MonoBehaviour
                 gameoverObject.gameObject.SetActive(true);
                 restartObject.gameObject.SetActive(true);
                 mainObject.gameObject.SetActive(true);
+                Time.timeScale = 0f;
             }
         }
         //Debug.Log(playercontrol.hp);

@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1027552535878715471, guid: ca875e29034a00449a3406ed6cf73705, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: c978fb55b82cf24459b011baf9aa7786, type: 2}
     - target: {fileID: 2887263295326672336, guid: ca875e29034a00449a3406ed6cf73705, type: 3}
       propertyPath: m_Size.x
       value: 0.28841448
@@ -89,7 +93,7 @@ PrefabInstance:
       objectReference: {fileID: 5701725825768568550, guid: bab1116932b153e438b43c821321ef5c, type: 3}
     - target: {fileID: 4188705349849495467, guid: ca875e29034a00449a3406ed6cf73705, type: 3}
       propertyPath: speed
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4188705349849495467, guid: ca875e29034a00449a3406ed6cf73705, type: 3}
       propertyPath: effect
@@ -108,6 +112,10 @@ PrefabInstance:
       value: 0.438
       objectReference: {fileID: 0}
     - target: {fileID: 4188705349849495468, guid: ca875e29034a00449a3406ed6cf73705, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: c978fb55b82cf24459b011baf9aa7786, type: 2}
+    - target: {fileID: 4188705349849495468, guid: ca875e29034a00449a3406ed6cf73705, type: 3}
       propertyPath: m_Offset.y
       value: -0.07677066
       objectReference: {fileID: 0}
@@ -123,6 +131,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.31972376
       objectReference: {fileID: 0}
+    - target: {fileID: 4188705349849495471, guid: ca875e29034a00449a3406ed6cf73705, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: c978fb55b82cf24459b011baf9aa7786, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca875e29034a00449a3406ed6cf73705, type: 3}
 --- !u!4 &6510649637597882242 stripped

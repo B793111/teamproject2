@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class playercontrol : MonoBehaviour
 {
-    public float maxSpeed;
+    public float movePower;
     public float jumpPower;
     bool isGround;
     bool isfall; //낙하점프가능판단
@@ -21,7 +21,7 @@ public class playercontrol : MonoBehaviour
     bool reload;
     public int hp;
     bool onhit;
-    bool isdie;
+    public bool isdie;
     bool nohpp;
     public int score;
     bool shootspeedup;
@@ -44,16 +44,26 @@ public class playercontrol : MonoBehaviour
 
     }
 
-    /*void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (bulletA.tag == "enemy")
-        {
-            Debug.Log("!");
-            score += 1;
-        }
-    }*/
+        if (other.CompareTag("platform"))
+            isGround = true;
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("platform"))
+            isGround = true;
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("platform"))
+            isGround = false;
+    }
+
     // Update is called once per frame
-    
+
     void Update()
     {
         playermotion();
@@ -95,9 +105,6 @@ public class playercontrol : MonoBehaviour
                     Invoke("delay", 0.1f);
                     sbulletcount -= 1;
                 }
-                
-                
-            
             }
            
         }
@@ -120,47 +127,40 @@ public class playercontrol : MonoBehaviour
          anim.SetBool("isjump", true);
          }
 
-          //move
-        if (rigid.velocity.x > maxSpeed) 
-         {
-         rigid.velocity = new Vector2(maxSpeed, rigid.velocity.y);
-         }
-        else if (rigid.velocity.x < maxSpeed * (-1)) {
-         rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
-         }
-        //flip
-        /*if (Input.GetButtonDown("Horizontal")) 
-         {
-         spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
-         }*/
         if (Input.GetAxisRaw("Horizontal") < 0)
         {
             transform.localScale = new Vector3(-1, 1);
             shootfront = true;
+            anim.SetBool("isrun", true);
         }
         else if (Input.GetAxisRaw("Horizontal") > 0)
         {
             transform.localScale = new Vector3(1, 1);
             shootfront = false;
+            anim.SetBool("isrun", true);
         }
-        //run
-        if (rigid.velocity.normalized.x == 0) 
-         {
-         anim.SetBool("isrun", false);
-         }
-         else 
-         {
-          anim.SetBool("isrun", true);
-          }
+        else
+        {
+            anim.SetBool("isrun", false);
+        }
     }
 
     void playermove()
     {
         if(isdie == false)
         {
-            float h = Input.GetAxisRaw("Horizontal");
-            rigid.AddForce(Vector2.right * h, ForceMode2D.Impulse);
-            isGround = Physics2D.OverlapCircle(groundCheck.position, check, platform);
+            Vector3 moveVelocity = Vector3.zero;
+
+            if (Input.GetAxisRaw("Horizontal") < 0)
+            {
+                moveVelocity = Vector3.left;
+            }
+            else if (Input.GetAxisRaw("Horizontal") > 0)
+            {
+                moveVelocity = Vector3.right;
+            }
+            transform.position += moveVelocity * movePower * Time.deltaTime;
+            //isGround = Physics2D.OverlapCircle(groundCheck.position, check, platform);
             //플레이어점프
             if (isGround)
             {
@@ -201,15 +201,9 @@ public class playercontrol : MonoBehaviour
                 canfalldoublejump = false;
                 }
 
-            
             }
-
         }
         
-        
-
-        
-
     }
 
     void jump()
@@ -220,7 +214,7 @@ public class playercontrol : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         ;
-        if (collision.gameObject.tag == "enemy" && onhit == false)
+        if (collision.gameObject.CompareTag("enemy") && onhit == false)
         {
             gameObject.layer = 9;
             onhit = true;
@@ -229,7 +223,7 @@ public class playercontrol : MonoBehaviour
             
             
         }
-        if (collision.gameObject.tag == "die")
+        if (collision.gameObject.CompareTag("die"))
         {
             //Debug.Log("!");
             gameObject.layer = 9;
@@ -239,7 +233,7 @@ public class playercontrol : MonoBehaviour
             Invoke("respawn", 2);
             
         }
-        if (collision.gameObject.tag == "hppotion" && nohpp ==false)
+        if (collision.gameObject.CompareTag("hppotion") && nohpp ==false)
         {
             
             gameObject.layer = 15;
@@ -249,11 +243,10 @@ public class playercontrol : MonoBehaviour
             gameObject.layer = 8;
             nohpp = false;
         }
-        if (collision.gameObject.tag == "item")
+        if (collision.gameObject.CompareTag("item"))
         {
             shootspeedup = true;
             sbulletcount = 100;
-            
         }
     }
     void respawn()
@@ -311,7 +304,12 @@ public class playercontrol : MonoBehaviour
             }
 
         }
+    }
 
-
+    public void die()
+    {
+        isdie = true;
+        gameObject.layer = 9;
+        spriteRenderer.color = new Color(1, 0, 0, 0.2f);
     }
 }
