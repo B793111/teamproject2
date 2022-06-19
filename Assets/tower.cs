@@ -12,9 +12,10 @@ public class tower : MonoBehaviour
 
     public GameObject warningtext;
     public GameObject Gameovertext;//표시할 텍스트설정
+    public GameObject restart_obj;
+    public GameObject main_obj;
     public Slider healthBarSlider;
 
-    public float enemyatkdelay = 3;
 
 
     void Start()
@@ -38,17 +39,15 @@ public class tower : MonoBehaviour
             }
         }
 
-        if (enemyatkdelay > 0)//몬스터 타워 공격 쿨타임 
-        {
-            enemyatkdelay -= Time.deltaTime;
-        }
         if (hp <= 0)
         {
            Gameovertext.SetActive(true);
+           restart_obj.gameObject.SetActive(true);
+           main_obj.gameObject.SetActive(true);
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col) //몬스터 타워 공격 쿨타임
+    void OnCollisionEnter2D(Collision2D col) //몬스터 타워 공격 
     {
         
 
@@ -57,13 +56,6 @@ public class tower : MonoBehaviour
             towerhit();
             Debug.Log("@@@@");
             //GameObject.FindWithTag("enemy").GetComponent<enemycontrol>().towerhit();
-            if (enemyatkdelay <= 0)
-            {
-                
-                enemyatkdelay = 3;
-                
-
-            }
         }
     }
 
