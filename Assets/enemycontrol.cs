@@ -35,7 +35,7 @@ public class enemycontrol : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        playercontrol = GameObject.Find("player").GetComponent<playercontrol>();
+        playercontrol = GameObject.Find("Player").GetComponent<playercontrol>();
         pos = this.my.transform.position;
         
         go();

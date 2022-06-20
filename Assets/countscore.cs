@@ -10,7 +10,7 @@ public class countscore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playercontrol = GameObject.Find("player").GetComponent<playercontrol>();
+        playercontrol = GameObject.Find("Player").GetComponent<playercontrol>();
     }
 
     // Update is called once per frame
