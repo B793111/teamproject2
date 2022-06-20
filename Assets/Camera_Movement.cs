@@ -11,7 +11,7 @@ public class Camera_Movement : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("player");
+        player = GameObject.Find("Player");
     }
 
     // Use this for initialization

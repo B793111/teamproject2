@@ -26,7 +26,7 @@ public class enemyAspawn : MonoBehaviour
             spawnwhat = enemyB;
         }
         GameObject enemy = Instantiate(spawnwhat, portal.position, transform.rotation);
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(15);
         StartCoroutine(enemyspawn());
     }
     // Start is called before the first frame update
@@ -46,6 +46,6 @@ public class enemyAspawn : MonoBehaviour
     {
         Debug.Log("www");
         GameObject enemy = Instantiate(enemyBoss, portal.position, transform.rotation);
-        Invoke("boss", 20);
+        Invoke("boss", 25);
     }
 }

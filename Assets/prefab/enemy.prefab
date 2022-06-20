@@ -53,7 +53,7 @@ MonoBehaviour:
   nextMove: 0
   canjump: 0
   filpX: 0
-  speed: 1
+  speed: 2
   score: 0
   health: 1
   effect: {fileID: 7248324099366473622, guid: 8faf21a82ffc474418248e03eac0167d, type: 3}
@@ -125,7 +125,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 4188705349849495441}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 1e595b5abb4457a44a830caf8fc8d165, type: 2}
+  m_Material: {fileID: 6200000, guid: c978fb55b82cf24459b011baf9aa7786, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -141,7 +141,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 4188705349849495441}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 1e595b5abb4457a44a830caf8fc8d165, type: 2}
+  m_Material: {fileID: 6200000, guid: c978fb55b82cf24459b011baf9aa7786, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -164,7 +164,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 1e595b5abb4457a44a830caf8fc8d165, type: 2}
+  m_Material: {fileID: 6200000, guid: c978fb55b82cf24459b011baf9aa7786, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

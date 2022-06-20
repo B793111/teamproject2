@@ -161,7 +161,7 @@ SpriteRenderer:
   m_Size: {x: 0.64, y: 0.96}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &1574842086269773285
@@ -227,8 +227,11 @@ MonoBehaviour:
   healtime: 5
   healdelay: 0
   warningtext: {fileID: 0}
+  Gameovertext: {fileID: 0}
+  restart_obj: {fileID: 0}
+  main_obj: {fileID: 0}
+  Bgm: {fileID: 0}
   healthBarSlider: {fileID: 1574842087425672262}
-  enemyatkdelay: 1
 --- !u!1 &1574842086455571054
 GameObject:
   m_ObjectHideFlags: 0

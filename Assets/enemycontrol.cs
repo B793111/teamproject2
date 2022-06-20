@@ -35,7 +35,7 @@ public class enemycontrol : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        playercontrol = GameObject.Find("player").GetComponent<playercontrol>();
+        playercontrol = GameObject.Find("Player").GetComponent<playercontrol>();
         pos = this.my.transform.position;
         
         go();
@@ -128,7 +128,7 @@ public class enemycontrol : MonoBehaviour
         Invoke("OnHitcolor", 1);
         if (health <= 0)
         {
-            itemrandom = Random.Range(2,5);
+            itemrandom = Random.Range(1,10);
             if(itemrandom ==2)
             {
                 GameObject enemy = Instantiate(hppotion, my.position, transform.rotation);
@@ -192,10 +192,9 @@ public class enemycontrol : MonoBehaviour
     }*/
     void OnDamaged(Vector2 targetPos)
     {
-        spriteRenderer.color = new Color(1, 1, 1, 0.3f);
         int bounce = transform.position.x - targetPos.x > 0 ? 1 : -1;
         // rigid.AddForce(new Vector2(bounce * 10, 1) * 10, ForceMode2D.Impulse);
-        rigid.AddForce(new Vector2(bounce, 1) * 8, ForceMode2D.Impulse);
+        rigid.AddForce(new Vector2(bounce, 1) * 5, ForceMode2D.Impulse);
 
     }
 

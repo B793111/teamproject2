@@ -12,9 +12,11 @@ public class tower : MonoBehaviour
 
     public GameObject warningtext;
     public GameObject Gameovertext;//표시할 텍스트설정
+    public GameObject restart_obj;
+    public GameObject main_obj;
+    public GameObject Bgm;
     public Slider healthBarSlider;
 
-    public float enemyatkdelay = 3;
 
 
     void Start()
@@ -29,7 +31,7 @@ public class tower : MonoBehaviour
         {
             healtime -= Time.deltaTime;
         }
-        if(healcountstop==false)
+        if (healcountstop == false)
         {
             if (healtime <= 0)
             {
@@ -38,17 +40,19 @@ public class tower : MonoBehaviour
             }
         }
 
-        if (enemyatkdelay > 0)//몬스터 타워 공격 쿨타임 
-        {
-            enemyatkdelay -= Time.deltaTime;
-        }
         if (hp <= 0)
         {
-           Gameovertext.SetActive(true);
+            Gameovertext.SetActive(true);
+            restart_obj.gameObject.SetActive(true);
+            main_obj.gameObject.SetActive(true);
+            Bgm.gameObject.SetActive(false);
+            Time.timeScale = 0f;
+            GameObject die = GameObject.Find("player") as GameObject;
+            die.GetComponent<playercontrol>().die(); //playercomtrol의 die호출
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col) //몬스터 타워 공격 쿨타임
+    void OnCollisionEnter2D(Collision2D col) //몬스터 타워 공격 
     {
         
 
@@ -57,13 +61,6 @@ public class tower : MonoBehaviour
             towerhit();
             Debug.Log("@@@@");
             //GameObject.FindWithTag("enemy").GetComponent<enemycontrol>().towerhit();
-            if (enemyatkdelay <= 0)
-            {
-                
-                enemyatkdelay = 3;
-                
-
-            }
         }
     }
 
@@ -73,8 +70,8 @@ public class tower : MonoBehaviour
         healtime = 5;
         healcountstop = false;
         warningtext.SetActive(true);
-        hp -= 5;
-        healthBarSlider.value -= 5;
+        hp -= 3;
+        healthBarSlider.value -= 3;
 
     }
     public void towerheal()
@@ -82,8 +79,8 @@ public class tower : MonoBehaviour
         if(hp <= 100)
         {
             warningtext.SetActive(false);
-            hp += 1;
-            healthBarSlider.value += 1;
+            hp += 2;
+            healthBarSlider.value += 2;
             healcountstop = true;
         }
 
