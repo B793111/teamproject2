@@ -30,6 +30,7 @@ public class playercontrol : MonoBehaviour
 
     public GameObject itemSound;
     public GameObject jumpSound;
+    public GameObject hitSound;
 
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
@@ -219,7 +220,7 @@ public class playercontrol : MonoBehaviour
         {
             gameObject.layer = 9;
             onhit = true;
-            //Debug.Log("onhit");
+            hitSound.gameObject.SetActive(true);
             OnDamaged(collision.transform.position);
             
             
@@ -271,8 +272,7 @@ public class playercontrol : MonoBehaviour
     {
         gameObject.layer = 8;
         spriteRenderer.color = new Color(1, 1, 1, 1);
-        
-        //Debug.Log("!");
+        hitSound.gameObject.SetActive(false);
         onhit = false;
 
     }

@@ -194,7 +194,7 @@ public class enemycontrol : MonoBehaviour
     {
         int bounce = transform.position.x - targetPos.x > 0 ? 1 : -1;
         // rigid.AddForce(new Vector2(bounce * 10, 1) * 10, ForceMode2D.Impulse);
-        rigid.AddForce(new Vector2(bounce, 1) * 8, ForceMode2D.Impulse);
+        rigid.AddForce(new Vector2(bounce, 1) * 5, ForceMode2D.Impulse);
 
     }
 
