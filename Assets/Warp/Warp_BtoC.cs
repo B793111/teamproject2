@@ -10,7 +10,7 @@ public class Warp_BtoC : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("player");
+        player = GameObject.Find("Player");
     }
 
     void Start()

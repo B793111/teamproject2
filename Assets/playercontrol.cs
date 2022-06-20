@@ -28,6 +28,8 @@ public class playercontrol : MonoBehaviour
     public int sbulletcount;
     bool shootfront;
 
+    public GameObject itemSound;
+    public GameObject jumpSound;
 
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
@@ -39,9 +41,6 @@ public class playercontrol : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        
-       // StartCoroutine(repeat());
-
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -209,6 +208,8 @@ public class playercontrol : MonoBehaviour
     void jump()
     {
         rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+        jumpSound.gameObject.SetActive(true);
+        Invoke("defaultJumpsound", 0.1f);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -237,6 +238,8 @@ public class playercontrol : MonoBehaviour
         {
             
             gameObject.layer = 15;
+            itemSound.gameObject.SetActive(true);
+            Invoke("defaultGainsound", 0.5f);
             hp += 1;
             nohpp = true;
             Debug.Log("aaaaa");
@@ -247,6 +250,8 @@ public class playercontrol : MonoBehaviour
         {
             shootspeedup = true;
             sbulletcount = 100;
+            itemSound.gameObject.SetActive(true);
+            Invoke("defaultGainsound", 0.5f);
         }
     }
     void respawn()
@@ -258,7 +263,7 @@ public class playercontrol : MonoBehaviour
     {
         spriteRenderer.color = new Color(1, 1, 1, 0.3f);
         int bounce = transform.position.x - targetPos.x > 0 ? 1 : -1;
-        rigid.AddForce(new Vector2(bounce, 0.1f) *10, ForceMode2D.Impulse);
+        rigid.AddForce(new Vector2(bounce, 0.1f) * 5, ForceMode2D.Impulse);
         hp -= 1;
         Invoke("offDamaged", 2);
     }
@@ -311,5 +316,15 @@ public class playercontrol : MonoBehaviour
         isdie = true;
         gameObject.layer = 9;
         spriteRenderer.color = new Color(1, 0, 0, 0.2f);
+    }
+
+    void defaultGainsound()
+    {
+        itemSound.gameObject.SetActive(false);
+    }
+
+    void defaultJumpsound()
+    {
+        jumpSound.gameObject.SetActive(false);
     }
 }

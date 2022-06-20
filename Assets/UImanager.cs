@@ -12,7 +12,6 @@ public class UImanager : MonoBehaviour
     void Start()
     {
         gameObject.SetActive(false);
-        Time.timeScale = 1f;
         //playercontrol = GameObject.Find("player").GetComponent<playercontrol>();
     }
 

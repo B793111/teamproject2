@@ -17,6 +17,7 @@ public class hpcontrol : MonoBehaviour
     public GameObject gameoverObject;
     public GameObject restartObject;
     public GameObject mainObject;
+    public GameObject Bgm;
 
 
     // Start is called before the first frame update
@@ -57,6 +58,7 @@ public class hpcontrol : MonoBehaviour
                 gameoverObject.gameObject.SetActive(true);
                 restartObject.gameObject.SetActive(true);
                 mainObject.gameObject.SetActive(true);
+                Bgm.gameObject.SetActive(false);
                 Time.timeScale = 0f;
             }
         }

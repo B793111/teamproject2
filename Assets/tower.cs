@@ -14,6 +14,7 @@ public class tower : MonoBehaviour
     public GameObject Gameovertext;//표시할 텍스트설정
     public GameObject restart_obj;
     public GameObject main_obj;
+    public GameObject Bgm;
     public Slider healthBarSlider;
 
 
@@ -44,6 +45,8 @@ public class tower : MonoBehaviour
             Gameovertext.SetActive(true);
             restart_obj.gameObject.SetActive(true);
             main_obj.gameObject.SetActive(true);
+            Bgm.gameObject.SetActive(false);
+            Time.timeScale = 0f;
             GameObject die = GameObject.Find("player") as GameObject;
             die.GetComponent<playercontrol>().die(); //playercomtrol의 die호출
         }
@@ -76,8 +79,8 @@ public class tower : MonoBehaviour
         if(hp <= 100)
         {
             warningtext.SetActive(false);
-            hp += 1;
-            healthBarSlider.value += 1;
+            hp += 2;
+            healthBarSlider.value += 2;
             healcountstop = true;
         }
 
