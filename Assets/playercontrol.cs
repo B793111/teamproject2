@@ -28,6 +28,12 @@ public class playercontrol : MonoBehaviour
     public int sbulletcount;
     bool shootfront;
 
+<<<<<<< Updated upstream
+=======
+    public GameObject itemSound;
+    public GameObject jumpSound;
+    public GameObject hitSound;
+>>>>>>> Stashed changes
 
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
@@ -224,14 +230,13 @@ public class playercontrol : MonoBehaviour
         {
             gameObject.layer = 9;
             onhit = true;
-            //Debug.Log("onhit");
+            hitSound.gameObject.SetActive(true);
             OnDamaged(collision.transform.position);
             
             
         }
         if (collision.gameObject.tag == "die")
         {
-            //Debug.Log("!");
             gameObject.layer = 9;
             spriteRenderer.color = new Color(1, 1, 1, 0.3f);
             hp -= 1;
@@ -273,8 +278,7 @@ public class playercontrol : MonoBehaviour
     {
         gameObject.layer = 8;
         spriteRenderer.color = new Color(1, 1, 1, 1);
-        
-        //Debug.Log("!");
+        hitSound.gameObject.SetActive(false);
         onhit = false;
 
     }
